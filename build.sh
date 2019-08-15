@@ -60,7 +60,7 @@ docker build --build-arg "ARAWEB_VERSION=${ARAWEB_VERSION}" \
              --label 'org.label-schema.vendor=Pierre GINDRAUD' \
              --label "org.label-schema.version=${image_version}" \
              --label 'org.label-schema.schema-version=1.0' \
-             --label "application.araserver.version=${ARAWEB_VERSION}" \
+             --label "application.araweb.version=${ARAWEB_VERSION}" \
              --tag "${image_building_name}" \
              --file "${DOCKERFILE_PATH}" \
              .
