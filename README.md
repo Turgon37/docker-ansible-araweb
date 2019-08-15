@@ -27,12 +27,6 @@ This image contains an instance of ARA Web Front served by Nginx
 | Volume | Usage                                                        |
 | ------ | ------------------------------------------------------------ |
 
-
-## Todo
-
-* Add django authentifcation support
-* Add prometheus exporter
-
 ## Installation
 
 ```
