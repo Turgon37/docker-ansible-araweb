@@ -1,0 +1,12 @@
+schemaVersion: 2.0.0
+
+metadataTest:
+  exposedPorts: ["80"]
+
+commandTests:
+  - name: ARA successfully installed
+    command: test
+    args:
+      - '-f'
+      - /usr/share/nginx/html/index.html
+    exitCode: 0

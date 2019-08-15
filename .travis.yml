@@ -1,0 +1,32 @@
+dist: xenial
+language: bash
+
+# Tell Travis to start Docker when it brings up an environment.
+services:
+  - docker
+
+env:
+  global:
+    - DOCKER_REPO=turgon37/ansible-araweb
+    - secure: 'ZcyDfyVm25aZj4hYLF06tj9L4gksZZAn3wxKX0g30pYk9c8Qp6YZI9nMR6lzvT2rLY/8xacOCRm/KsHjYQejRfVP6sVs6A77cOSBonsi6wWqfpJ6ODcMEj4oMRUU7iqMbcEH0kNhwTrXRNmRGjBGe4Q6yxLgLFtdGhQXVP3meMUV4OxeMYBxKoVEX7KSWbjDKUZ7+oCqNKbVoU7MfUFZoIbINWp5Tyjwnjf0tFQPmSOgE3hVMQTmx/pWbMxNVyYmHiErKip143pDOWbOGxGCQPty1OV7TaUHSyehIlYR6nl+jAqn8215MbkuWOPmxdyFKL0ZhjueH18JopUZ3u82E5OWV+gjiHZZ0cBCjAOA8lBo5a9kmPfniPbc9KrM7ndXywLjUbpTlFrLDSin+hiK6GvdkDCcFHVLJvUejRU0tzGv9hRj0Ge1vB8gktNwMlWYZb6H2Sx/wvl7LtBuyPbw8eewozyqzZ0DyAQMBljQAKpjK1GBkgR5O3Rw3Znm/H56IyVpS9yDWGX2r5g3BG57Lt9V9Z4KoOVZ9ZG3bci7gryxy/jGuCz/wgknp/qzozrKuCq2/IVI3cJr3pv9+pcAvBRCgLCtrzvxkTCZFOF5YVI9sjvQdJ617EZFDBan7PbwJLV3XndFAde9ikpmWo1oh1e/Kq4Hbiex+ueCMBDgMd8='
+    - secure: 'P/OLwMNnBKMqTSnjiqoBDawN6CIrJejJppzcRntG73QVW7gNf/SIUyeFkb3oz6WfQ5/8b7yy1G+rjUflVKva/Vl7cuq+pejVbMrw4+cJOxv+ci57+dQfepHXoDt9mIFDD4bNB6t+hNAUMiBhv9RFuZZwMi+fM4rhNd5oxfhGYAXZtaeA/53VVccnrFbjjpIOygNI9CEtdsPFTcbWxPzFvo0k+JA22E/k3NTEr3u2wU8i3VbTTjFjFAx2oM9maIVqglDyIelZV0k2Yi1w4DNoRrsAvfrmIbMnrf3SRfQ2hzgFE26HiIvNA61DZ9IittWZI7tS/LUcNuNZtNbXKfYnR4bzV7L/0zs2tcKSmv+X482Jno6qn6SaGgg0O1SFYPhMyQO3CZ/P2LKRnKa8RUyokxSu7wtcz3pq6ayAEuLmGjhTUamNLxG6aJQUF+k9ixZnk29eqRv0txbEu7MfXhRIjpxAn9p3oa9JQKWH4cyoGZJvElBuZrUN1LE12Rtb/E2RzNewZLM3l781Kpzs2a4CGfTN2PsJuQ+oHVR5f1MIell53wGcts8lRITK0pE17mEO0pQNeN09I4TpjN0TQ3zGIcNrx4hen27KLUYCJc9ux3Q20IryhUoqQaqVQF6WyuTvDEZkizv0LosnHkljM0FceHNNXRgAwH4fHuTKOClEVwQ='
+  matrix:
+    # Provide a list of ARA web version to build
+    - ARAWEB_VERSION=''
+
+script:
+  #
+  ## Build
+  #
+  - ./build.sh
+
+  #
+  ## Run tests
+  #
+  - ./tests.sh && touch _test_ok
+
+  #
+  ## Publish
+  #
+  - '[ "$TRAVIS_PULL_REQUEST" == "false" ] || exit 0'
+  - '[ "$TRAVIS_SECURE_ENV_VARS" == "true" -a -f _test_ok ] && ./publish.sh'
