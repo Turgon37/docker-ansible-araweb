@@ -29,7 +29,7 @@ RUN apk add --no-cache \
       jq
 
 HEALTHCHECK --interval=5s --timeout=3s --retries=3 \
-    CMD curl --silent --fail http://localhost:8080 || exit 1
+    CMD curl --silent --fail http://localhost:80 || exit 1
 
 COPY /entrypoint.sh /
 
