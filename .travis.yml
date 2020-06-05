@@ -1,5 +1,6 @@
 dist: xenial
 language: bash
+sudo: required
 
 # Tell Travis to start Docker when it brings up an environment.
 services:
@@ -13,6 +14,10 @@ env:
   matrix:
     # Provide a list of ARA web version to build
     - ARAWEB_VERSION=''
+
+before_install:
+    - sudo apt update
+    - sudo apt install -y shellcheck
 
 script:
   #
