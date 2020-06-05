@@ -5,11 +5,12 @@ FROM node:lts as deps
 
 ARG ARAWEB_VERSION
 
-RUN cd /tmp \
-    && git clone https://github.com/ansible-community/ara-web -b $ARAWEB_VERSION --depth 1 \
-    && cd ara-web \
-    && npm install --production --verbose \
-    && npm run-script build
+WORKDIR /tmp
+RUN git clone https://github.com/ansible-community/ara-web -b $ARAWEB_VERSION --depth 1
+
+WORKDIR /tmp/ara-web
+RUN npm install --production --verbose
+RUN npm run-script build
 
 #
 # Second stage : install ara
