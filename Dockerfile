@@ -27,7 +27,8 @@ COPY vhost.nginx.conf /etc/nginx/conf.d/default.conf
 
 RUN apk add --no-cache \
       curl \
-      jq
+      jq \
+      tzdata
 
 HEALTHCHECK --interval=5s --timeout=3s --retries=3 \
     CMD curl --silent --fail http://localhost:80 || exit 1
