@@ -32,7 +32,9 @@ RUN apk add --no-cache \
 HEALTHCHECK --interval=5s --timeout=3s --retries=3 \
     CMD curl --silent --fail http://localhost:80 || exit 1
 
-COPY /entrypoint.sh /
+COPY /docker-entrypoint.sh /
+COPY /docker-entrypoint.d/* /docker-entrypoint.d/
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 CMD ["nginx", "-g", "daemon off;"]
