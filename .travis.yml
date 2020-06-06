@@ -13,7 +13,7 @@ env:
     - secure: 'P/OLwMNnBKMqTSnjiqoBDawN6CIrJejJppzcRntG73QVW7gNf/SIUyeFkb3oz6WfQ5/8b7yy1G+rjUflVKva/Vl7cuq+pejVbMrw4+cJOxv+ci57+dQfepHXoDt9mIFDD4bNB6t+hNAUMiBhv9RFuZZwMi+fM4rhNd5oxfhGYAXZtaeA/53VVccnrFbjjpIOygNI9CEtdsPFTcbWxPzFvo0k+JA22E/k3NTEr3u2wU8i3VbTTjFjFAx2oM9maIVqglDyIelZV0k2Yi1w4DNoRrsAvfrmIbMnrf3SRfQ2hzgFE26HiIvNA61DZ9IittWZI7tS/LUcNuNZtNbXKfYnR4bzV7L/0zs2tcKSmv+X482Jno6qn6SaGgg0O1SFYPhMyQO3CZ/P2LKRnKa8RUyokxSu7wtcz3pq6ayAEuLmGjhTUamNLxG6aJQUF+k9ixZnk29eqRv0txbEu7MfXhRIjpxAn9p3oa9JQKWH4cyoGZJvElBuZrUN1LE12Rtb/E2RzNewZLM3l781Kpzs2a4CGfTN2PsJuQ+oHVR5f1MIell53wGcts8lRITK0pE17mEO0pQNeN09I4TpjN0TQ3zGIcNrx4hen27KLUYCJc9ux3Q20IryhUoqQaqVQF6WyuTvDEZkizv0LosnHkljM0FceHNNXRgAwH4fHuTKOClEVwQ='
   matrix:
     # Provide a list of ARA web version to build
-    - ARAWEB_VERSION=''
+    - ARAWEB_VERSION='' UPDATE_README=1
 
 before_install:
     - sudo apt update
